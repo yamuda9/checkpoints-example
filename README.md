@@ -92,3 +92,20 @@ puts ""
 puts "Remaining Rails checkpoints: #{rails_registration.remaining_checkpoints}"
 puts "Remaining iOS checkpoints: #{ios_registration.remaining_checkpoints}"
 ```
+
+Output:
+
+```
+$ ruby checkpoints-example.rb
+
+Remaining Rails checkpoints: 55
+Remaining iOS checkpoints: 48
+
+Completed Rails checkpoint: 54
+Completed iOS checkpoint: 47
+Completed Rails checkpoint: 53
+Completed iOS checkpoint: 46
+
+Remaining Rails checkpoints: 53
+Remaining iOS checkpoints: 46
+```
