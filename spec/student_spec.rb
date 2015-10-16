@@ -12,4 +12,18 @@ describe Student do
       expect(student).to respond_to(:last_name)
     end
   end
+
+  describe "assigns" do
+    it "should assign Joe as the first name" do
+      expect(student.first_name).to eq("Joe")
+    end
+
+    it "should assign Smith as the last name" do
+      expect(student.last_name).to eq("Smith")
+    end
+
+    it "should return Joe Smith as the full name" do
+      expect(student.full_name).to eq("Joe Smith")
+    end
+  end
 end

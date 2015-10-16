@@ -20,8 +20,7 @@ describe Course do
     end
 
     it "should return the number of remaining checkpoints" do
-      course.remaining_checkpoints
-      expect(course.checkpoints).to eq(54)
+      expect(course.remaining_checkpoints).to eq(54)
     end
   end
 end
