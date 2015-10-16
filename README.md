@@ -3,10 +3,13 @@ class Student
   attr_accessor :first_name
   attr_accessor :last_name
 
-  def initialize(names={})
-    # please complete the implementation using TDD
+  def initialize(names = {})
     @first_name = names[:first_name]
     @last_name = names[:last_name]
+  end
+
+  def full_name
+    "#{@first_name} #{@last_name}"
   end
 end
 
@@ -18,18 +21,15 @@ class Course
   attr_accessor :checkpoints
 
   def initialize(info={})
-    # please complete the implementation using TDD
     @name = info[:name]
     @checkpoints = info[:checkpoints]
   end
 
   def complete_checkpoint
-    # please complete the implementation using TDD
     @checkpoints -= 1
   end
 
   def remaining_checkpoints
-    # please complete the implementation using TDD
     @checkpoints
   end
 end
@@ -43,7 +43,6 @@ class Registration
 
   # allows one to create a new registration
   def initialize(info={})
-    # please complete the implementation using TDD
     @student = info[:student]
     @course = info[:course]
     @started_at = 0
@@ -51,12 +50,10 @@ class Registration
   end
 
   def complete_checkpoint
-    # please complete the implementation using TDD
     @course.complete_checkpoint
   end
 
   def remaining_checkpoints
-    # please complete the implementation using TDD
     @course.remaining_checkpoints
   end
 end
