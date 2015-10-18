@@ -34,7 +34,6 @@ class Course
   end
 end
 
-
 class Registration
   attr_accessor :student
   attr_accessor :course
