@@ -5,21 +5,18 @@ class Registration
   attr_reader :ended_at
 
   # allows one to create a new registration
-  def initialize(info={})
-    # please complete the implementation using TDD
-    @student = info[:student]
-    @course = info[:course]
+  def initialize(student, course, duration)
+    @student = student
+    @course = course
     @started_at = 0
-    @ended_at = info[:duration]
+    @ended_at = duration
   end
 
   def complete_checkpoint
-    # please complete the implementation using TDD
     @course.complete_checkpoint
   end
 
   def remaining_checkpoints
-    # please complete the implementation using TDD
     @course.remaining_checkpoints
   end
 end

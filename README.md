@@ -3,9 +3,9 @@ class Student
   attr_accessor :first_name
   attr_accessor :last_name
 
-  def initialize(names = {})
-    @first_name = names[:first_name]
-    @last_name = names[:last_name]
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
   end
 
   def full_name
@@ -20,9 +20,9 @@ class Course
   attr_accessor :name
   attr_accessor :checkpoints
 
-  def initialize(info={})
-    @name = info[:name]
-    @checkpoints = info[:checkpoints]
+  def initialize(name, checkpoints)
+    @name = name
+    @checkpoints = checkpoints
   end
 
   def complete_checkpoint
@@ -42,11 +42,11 @@ class Registration
   attr_reader :ended_at
 
   # allows one to create a new registration
-  def initialize(info={})
-    @student = info[:student]
-    @course = info[:course]
+  def initialize(student, course, duration)
+    @student = student
+    @course = course
     @started_at = 0
-    @ended_at = info[:duration]
+    @ended_at = duration
   end
 
   def complete_checkpoint
@@ -60,18 +60,23 @@ end
 
 # setup our student, course, and registration objects
 
-john_doe = Student.new(first_name: "John", last_name: "Doe")
-rails_web_development = Course.new(name: "Rails Web Development", checkpoints: 55 )
-ios_development = Course.new(name: "iOS Development", checkpoints: 48 )
+john_doe = Student.new( "John", "Doe")
+rails_web_development = Course.new("Rails Web Development", 55 )
+ios_development = Course.new("iOS Development", 48 )
 
 # register for courses
 
-rails_registration = Registration.new(student: john_doe, course: rails_web_development, duration: 24)
-ios_registration = Registration.new(student: john_doe, course: ios_development, duration: 24)
+rails_registration = Registration.new(john_doe, rails_web_development, 24)
+ios_registration = Registration.new(john_doe, ios_development, 24)
 
 # check the number of remaining checkpoints
 
 puts ""
+puts "Student: #{rails_registration.student.full_name}"
+puts "Course: #{rails_web_development.name}; Total Checkpoints: #{rails_registration.course.checkpoints}; Duration: #{rails_registration.ended_at} weeks"
+puts "Course: #{ios_development.name}; Total Checkpoints: #{ios_registration.course.checkpoints}; Duration: #{ios_registration.ended_at} weeks"
+puts ""
+
 puts "Remaining Rails checkpoints: #{rails_registration.remaining_checkpoints}"
 puts "Remaining iOS checkpoints: #{ios_registration.remaining_checkpoints}"
 puts ""
@@ -88,12 +93,17 @@ puts ""
 
 puts "Remaining Rails checkpoints: #{rails_registration.remaining_checkpoints}"
 puts "Remaining iOS checkpoints: #{ios_registration.remaining_checkpoints}"
+
 ```
 
 Output:
 
 ```
 $ ruby checkpoints-example.rb
+
+Student: John Doe
+Course: Rails Web Development; Total Checkpoints: 55; Duration: 24 weeks
+Course: iOS Development; Total Checkpoints: 48; Duration: 24 weeks
 
 Remaining Rails checkpoints: 55
 Remaining iOS checkpoints: 48
@@ -105,4 +115,5 @@ Completed iOS checkpoint: 46
 
 Remaining Rails checkpoints: 53
 Remaining iOS checkpoints: 46
+
 ```
